@@ -13,33 +13,32 @@
   <script src="scripts/modernizr-2.6.1.min.js"></script>  
 </head>
 <body>
+  <header class="site-banner row" id="bannerContent" role="banner">
+    <a href="" class="trigger-off-canvas logo ir">Mifos</a>
+    <a href="#sidebarContent" class="menu">Menu</a>
+  </header>
   <div class="site-main" role="application">
-    <header class="site-banner row" id="bannerContent" role="banner">
-      <a href="" class="trigger-off-canvas logo ir">Mifos</a>
-      
-    </header>
-    
-      <!-- Templates go here -->
-      <aside class="off-canvas column" id="sidebarContent" role="complementary">
-        <!-- Navs go here -->
-      </aside>
+    <!-- Templates go here -->
+    <aside class="off-canvas column" id="sidebarContent" role="complementary">
+      <!-- Navs go here -->
+    </aside>
 
-      <section class="content column" id="mainContent" role="main">
-        <!-- Main  -->
-        <article class="page" id="clients">
-          
-        </article>
-        <article class="page" id="users">
-          
-        </article>
-        <article class="page" id="org">
-          
-        </article>
-        <article class="page" id="reports">
-          
-        </article>
+    <section class="content column" id="mainContent" role="main">
+      <!-- Main  -->
+      <article class="page" id="clients">
+        
+      </article>
+      <article class="page" id="users">
+        
+      </article>
+      <article class="page" id="org">
+        
+      </article>
+      <article class="page" id="reports">
+        
+      </article>
 
-      </section>
+    </section>
   </div>
 
   <footer class="site-footer" id="footerContent" role="contentinfo">
@@ -122,31 +121,6 @@
    <div class="error">
       {{#list errors}}{{defaultUserMessage}}{{/list}}
     </div>
-</script>
-
-<!-- User Details -->
-<script id="user-detail-template" type="text/x-handlebars-template">
-  <article class="page" id="userDetails">
-    <form id="detailsForm" action="">
-        <div>
-          <label for="username">Username:</label>
-          <input id="username" name="username" type="text" value="{{user.username}}"/>
-        </div>
-        <div>
-          <label for="firstName">First name:</label>
-          <input id="firstName" name="firstName" type="text" value="{{user.firstname}}"/>
-        </div>
-        <div>
-          <label for="lastName">Last name:</label>
-          <input id="lastName" name="lastName" type="text" value="{{user.lastname}}"/>
-        </div>
-        <div>
-          <label for="email">Email:</label>
-          <input id="email" name="email" type="text" value="{{user.email}}"/>
-        </div>
-        <div id="roles">{{#role-checkbox-list data}}{{name}}{{/role-checkbox-list}}</div>
-    </form>
-  </artical>
 </script>
 
   <script src="scripts/zepto-1-rc-1.min.js"></script>

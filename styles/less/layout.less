@@ -17,12 +17,22 @@ body {
   + .row {padding-left: 0; padding-right: 0}
 }
 .column {
-
 }
+/* View Page Styles */ 
+  .page {
 
+  }
+  .page:empty {
+    opacity: 0;
+    visibility: hidden;
+    left: 100%;
+  }
+
+    
 /* Header
 ========================================================================== */
 .site-banner {
+  position: relative;
   background: #fff;
   .padding(t,@baseFontPx,12,);
   .padding(b,@baseFontPx,12,);
@@ -33,15 +43,47 @@ body {
     background: url(../images/logo.png) 0 50% no-repeat;
     .background-size(100% auto);
   }
+
+  .menu {
+    display: none;
+    position: absolute;
+    top: 50%;
+    .pos(r,@baseFontPx,24);
+
+    .margin(t,@baseFontPx,-24);
+    .border-radius(a,@baseFontPx,2);
+    .border(a,@baseFontPx,1,darken(@grey,10%));
+    .padding(tr,@baseFontPx,12,6);
+    background: @grey;
+    color: #fff;
+    
+    &.show {display: block;}
+  }
 }
 
 
 /* Main Content 
 ========================================================================== */
-[role="main"] {
-  overflow: hidden;
-  max-width: 100%;
-  .padding(t,@baseFontPx,24);
-}
+[role="application"] {
+  position: relative;
+}  
+  [role="main"] {
+    overflow: hidden;
+    max-width: 100%;
+    .padding(t,@baseFontPx,24);
+  }
 
+  [role="complementary"] {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    background: blue;
+  }
+    /* Off Canvas Elements */
+    .off-canvas {
+      left: -100%;
+      
+      &.on {left: 0;}
+    }
 

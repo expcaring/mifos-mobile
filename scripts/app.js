@@ -51,7 +51,8 @@ mifos.loadHome = function()
     var source   = $("#view-nav-main").html();
     var template = Handlebars.compile(source);
     var html = template();
-    $('article').removeClass("isVisible");
+    $('.menu').addClass('show');
+
     mifos.render("#sidebarContent", html);
 }
 
@@ -163,4 +164,11 @@ $(document).ready(function(){
         mifos.login('mifos','password');
     })
 
+    $('body').on('click','.menu',function(e){
+      e.preventDefault();
+      var sidebar = $(this).attr('href');
+
+      $(sidebar).toggleClass('on');
+
+    });
 });

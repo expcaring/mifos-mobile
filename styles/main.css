@@ -730,9 +730,15 @@ body {
   padding-left: 0;
   padding-right: 0;
 }
+/* View Page Styles */.page:empty {
+  opacity: 0;
+  visibility: hidden;
+  left: 100%;
+}
 /* Header
 ========================================================================== */
 .site-banner {
+  position: relative;
   background: #fff;
   padding-top: 0.9230769230769231em;
   padding-bottom: 0.9230769230769231em;
@@ -747,12 +753,48 @@ body {
   -o-background-size: 100% auto;
   background-size: 100% auto;
 }
+.site-banner .menu {
+  display: none;
+  position: absolute;
+  top: 50%;
+  right: 1.8461538461538463em;
+  margin-top: -1.8461538461538463em;
+  -webkit-border-radius: 0.15384615384615385em;
+  -moz-border-radius: 0.15384615384615385em;
+  -ms-border-radius: 0.15384615384615385em;
+  -o-border-radius: 0.15384615384615385em;
+  border-radius: 0.15384615384615385em;
+  border: 0.07692307692307693em solid #434445;
+  padding: 0.9230769230769231em 0.46153846153846156em;
+  background: #5c5d5f;
+  color: #fff;
+}
+.site-banner .menu.show {
+  display: block;
+}
 /* Main Content 
 ========================================================================== */
+[role="application"] {
+  position: relative;
+}
 [role="main"] {
   overflow: hidden;
   max-width: 100%;
   padding-top: 1.8461538461538463em;
+}
+[role="complementary"] {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  height: 100%;
+  background: blue;
+}
+/* Off Canvas Elements */
+.off-canvas {
+  left: -100%;
+}
+.off-canvas.on {
+  left: 0;
 }
 /* ==========================================================================
    600 Media Query
