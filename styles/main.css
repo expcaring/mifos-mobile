@@ -671,13 +671,38 @@ input[type="button"] {
   border: 0.07692307692307693em solid #2a2a2b;
   margin-bottom: 0.9230769230769231em;
   padding: 0.9230769230769231em 1.3846153846153846em;
+  text-align: left;
 }
 /* Buttons
   ========================================================================== */
+button,
+input[type="button"] {
+  font-weight: bold;
+  text-align: center;
+  -webkit-box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.1) , inset 0 -2px 3px rgba(0, 0, 0, 0.2) , 0 -1px 0 rgba(0, 0, 0, 0.4) , 0 1px 0 rgba(255, 255, 255, 0.2);
+  -moz-box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.1) , inset 0 -2px 3px rgba(0, 0, 0, 0.2) , 0 -1px 0 rgba(0, 0, 0, 0.4) , 0 1px 0 rgba(255, 255, 255, 0.2);
+  -ms-box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.1) , inset 0 -2px 3px rgba(0, 0, 0, 0.2) , 0 -1px 0 rgba(0, 0, 0, 0.4) , 0 1px 0 rgba(255, 255, 255, 0.2);
+  -o-box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.1) , inset 0 -2px 3px rgba(0, 0, 0, 0.2) , 0 -1px 0 rgba(0, 0, 0, 0.4) , 0 1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.1) , inset 0 -2px 3px rgba(0, 0, 0, 0.2) , 0 -1px 0 rgba(0, 0, 0, 0.4) , 0 1px 0 rgba(255, 255, 255, 0.2);
+  border: 0.07692307692307693em solid transparent;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.3);
+}
 /* A bit of style... */
 button[type="submit"] {
-  border: 0.07692307692307693em solid #80a82e;
-  background: #b1d567;
+  border-color: #004f83;
+  background: #006eb6;
+}
+button[type="submit"]:focus,
+button[type="submit"]:active {
+  background: #008de9;
+}
+button[type="button"] {
+  border-color: #5c5d5f;
+  background: #828386;
+}
+button[type="button"]:focus,
+button[type="button"]:active {
+  background: #9c9d9f;
 }
 /* ==========================================================================
    Layouts - Mobile First

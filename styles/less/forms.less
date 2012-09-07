@@ -18,20 +18,41 @@
     .border(a,@baseFontPx,1,lighten(@text,10%));
     .margin(b,@baseFontPx,12);
     .padding(tr,@baseFontPx,12,18);
+    text-align: left;
   }
   
 
   
   /* Buttons
   ========================================================================== */
-  button, input[type="submit"] {
-    
+  button, input[type="button"]{
+    font-weight: bold;
+    text-align: center;
+    .box-shadow(
+      inset 0 2px 0 rgba(255,255,255,.1)~","
+      inset 0 -2px 3px rgba(0,0,0,.2)~","
+      0 -1px 0 rgba(0,0,0,.4)~","
+      0 1px 0 rgba(255,255,255,.2)
+    );
+    .border(a,@baseFontPx,1);
+    .text-shadow(0 1px rgba(255,255,255,.3))
   }
 
   /* A bit of style... */
-  button[type="submit"] {
-    .border(a,@baseFontPx,1,darken(@brandGreen,20%));
-    background: @brandGreen;
+  button[type="submit"] {    
+    border-color: darken(@brandBlue,10%);
+    background: @brandBlue;
+    
+    &:focus, &:active {
+      background: lighten(@brandBlue,10%);
+    }
+  }
+  button[type="button"] {
+    border-color: @grey;
+    background: lighten(@grey,15%);
 
+    &:focus, &:active {
+      background: lighten(@grey,25%);
+    }  
   }
   
