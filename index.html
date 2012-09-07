@@ -76,6 +76,7 @@
         </article>
     </script>
 
+
   <script type="text/x-handlebars-template" id="view-nav-utility">
     <nav class="utility-nav">
       <ul>
@@ -85,6 +86,26 @@
       </ul>
     </nav>
   </script>
+
+    <script id="listUsers-template" type="text/x-handlebars-template">
+        <ul class="users_list">
+            {{#each users}}
+            <li>
+                <div class="">
+                    <span>{{officeName}}</span>
+                    <span>{{username}}</span>
+                    <span>{{lastname}}, {{firstname}}</span>
+                    <span>{{email}}</span>
+                    <span><a href="">View/Edit</a></span>
+                    <span><a href="">Delete</a></span>
+                    <span><a href="">Change Password</a></span>
+                </div>
+            </li>
+            {{/each}}
+        </ul>
+    </script>
+
+
 
   <script src="scripts/zepto-1-rc-1.min.js"></script>
 </body>
