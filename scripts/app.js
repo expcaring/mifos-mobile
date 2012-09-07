@@ -1,4 +1,5 @@
 
+
 var mifos = {};
 mifos.url = "https://ec2-46-137-62-163.eu-west-1.compute.amazonaws.com:8443/mifosng-provider/api/v1/";
 mifos.tenantId = "&tenantIdentifier=default"
@@ -55,6 +56,7 @@ mifos.loadHome = function()
     $('.menu').addClass('show');
 
     mifos.render("#sidebarContent", html);
+    mifos.render("#home", html);
 }
 
 mifos.loginFailed = function(data)
@@ -145,30 +147,34 @@ mifos.userDetailsSuccess = function(jsonResponse)
     mifos.render("#users");
 }
 
+
 $(document).ready(function(){
     var source   = $("#signIn-template").html();
     var template = Handlebars.compile(source);
     var html = template({errors : []});
     $("#mainContent").append(html);
 
-    $(document).on('submit','#signInForm',function(e){
+    $("body").on('submit','#signInForm',function(e){
         e.preventDefault();
         var data = $(this).serializeArray();
         console.log(this);
-        mifos.login('mifos','password');
+        mifos.login(data.username,data.password);
     })
 
-    $(document).on('click','.tab a',function(e){
+    $("body").on('click','.tab a',function(e){
         var source;
         switch($(e.target).attr("href")){
             case '#users':
-                        source = $("#userMenu-template").html();
-        }
-        var template = Handlebars.compile(source);
-        var html = template({errors : []});
-        mifos.render("#mainContent",html);
-    })
+                        mifos.renderTemplate("#userMenu-template","#mainContent");
+            case '#viewUsers':
+                        mifos.renderTemplate("#userMenu-template","#mainContent");
+                        var data = mifos.listUsers();
+                        var source = $("listUsers-template").html();
+                        var template = Handlebars.compile(source);
+                        var html = template(data);
+        }               $("#mainContent").append(html);
 
+    })
 
     $('body').on('click','.menu',function(e){
       e.preventDefault();

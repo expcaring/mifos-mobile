@@ -23,20 +23,25 @@
       <!-- Navs go here -->
     </aside>
 
-    <section class="content column" id="mainContent" role="main">
-      <!-- Main  -->
-      <article class="page" id="clients">
-        
-      </article>
-      <article class="page" id="users">
-        
-      </article>
-      <article class="page" id="org">
-        
-      </article>
-      <article class="page" id="reports">
-        
-      </article>
+
+      <section class="content column" id="mainContent" role="main">
+        <!-- Main  -->
+        <article class="page" id="clients">
+          
+        </article>
+        <article class="page" id="users">
+          
+        </article>
+        <article class="page" id="org">
+          
+        </article>
+        <article class="page" id="reports">
+          
+        </article>
+         <article class="page" id="home">
+
+         </article>
+
 
     </section>
   </div>
@@ -86,6 +91,24 @@
     </nav>
   </script>
 
+  <!--<script id="userMenu-template" type="text/x-handlebars-template">
+      <nav>
+          <ul>
+              <li><a href="#viewUsers">View Users</a></li>
+              <li><a href="#viewRoles">View Roles</a></li>
+              <li><a href="#addRole">Add Role</a></li>
+              <li><a href="#viewPermission">View Permissions</a></a></li>
+          </ul>
+      </nav>
+  </script>-->
+
+  <script id="userMenu-template" type="text/x-handlebars-template">
+              <span><a href="#viewUsers">View Users</a></span>
+              <span><a href="#viewRoles">View Roles</a></span>
+              <span><a href="#addRole">Add Role</a></span>
+              <span><a href="#viewPermission">View Permissions</a></span>
+  </script>
+
    <script id="listUsers-template" type="text/x-handlebars-template">
         <ul class="users_list">
             {{#each users}}
@@ -104,13 +127,7 @@
         </ul>
    </script>
 
-  <script id="userMenu-template" type="text/x-handlebars-template">
-      <a href="javascript:void(null);" id="viewUsers">View Users</a>
-      <a href="javascript:void(null);" id="addUser">Add User</a>
-      <a href="javascript:void(null);" id="viewRoles">View Roles</a>
-      <a href="javascript:void(null);" id="addRole">Add Role</a>
-      <a href="javascript:void(null);" id="viewPermission">View Permissions</a>
-  </script>
+
 
   <script id="emptyClientPage" type="text/x-handlebars-template">
       <label>Client List would go here!</label>
