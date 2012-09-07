@@ -61,20 +61,6 @@ h6, .h6 {
 
 h5, p.secondary {line-height: 1.4}
 
-/* Headline Bars */
-.headline-bar {
-  background-color: @moduleBlue;
-	.border-radius(tlr,@h3,4,4);
-  color: #fff;
-  #font > .size(@h3);
-  .margin(trb,@h3,0,0,24);
-  .padding(tr,@h3,6,12);
-}
-.headline-bar-alt {
-  background-color: @headline;
-  color: @text;
-}
-
   
 p {
   margin: 0;
@@ -125,7 +111,6 @@ small { #font > .size(11) }
 .underline {text-decoration: underline;} 
 
 /* Text Alert Classes  */
-.light {color: @alertDefault}
-.bold {color: @alertBold}
+.error {color: @alertError}
 .success {color: @alertSuccess}
 .important {color: @alertImportant}

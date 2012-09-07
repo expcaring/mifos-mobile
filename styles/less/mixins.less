@@ -7,7 +7,7 @@
 /* GRID AND SITE SETUP
 ========================================================================== */
 /* Sets max-width on site wrapper */
-@absMaxWidth: 1104px;
+@absMaxWidth: 900px;
 /* Root Font Size */
 @baseFontPx: 13;          
 /*Root pixel line-height target */
@@ -31,17 +31,11 @@
  @grey: #5c5d5f;
  
  @brandBlue: #006eb6;
- @brandGreen: #b1d567
+ @brandGreen: #b1d567;
  @brandGreenDark: #00ae4c;
 
  @error: #CC0000; 
   
- @alertDefault: @moduleGrey;
- //@alertDefaultBg: ;
- @alertLight: lighten(@alertDefault,10%);
- @alertBold: @brandBlue;
- @alertInfo: #246497;
- @alertInfoBg: spin(lighten(desaturate(@alertInfo,32%),56%),-16);
  @alertSuccess: #009933;
  @alertSuccessBg: desaturate(lighten(@alertSuccess,60%),65%);
  @alertWarn: #FFEFB2;
@@ -660,7 +654,7 @@
 .column-rule(
  @width: 1, 
  @style: solid,
- @color: @moduleGrey
+ @color: @text
 ) {
  -webkit-column-rule: @width @style @color;
  -moz-column-rule:    @width @style @color;

@@ -9,7 +9,7 @@
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width">
   <meta http-equiv="cleartype" content="on">  
-  <link rel="stylesheet" href="css/" />
+  <link rel="stylesheet" href="styles/main.css" />
   <script src="js/vendor/modernizr-2.6.1.min.js"></script>  
 </head>
 <body>
@@ -26,6 +26,19 @@
 
       <section class="content column" id="mainContent" role="main">
         <!-- Main  -->
+        <article class="page" id="clients">
+          
+        </article>
+        <article class="page" id="users">
+          
+        </article>
+        <article class="page" id="org">
+          
+        </article>
+        <article class="page" id="reports">
+          
+        </article>
+
       </section>
   </div>
 
@@ -35,17 +48,18 @@
   <script id="view-nav-main" type="text/x-handlebars-template">
     <nav class="main-nav">
       <ul>
-        <li class="tab"><a href="#">Clients</a></li>
-        <li class="tab"><a href="">User Administration</a></li>
-        <li class="tab"><a href="">Organisation Administration</a></li>
-        <li class="tab"><a href="">Reports</a></li>
+        <li class="tab"><a href="#clients">Clients</a></li>
+        <li class="tab"><a href="#users">User Administration</a></li>
+        <li class="tab"><a href="#org">Organisation Administration</a></li>
+        <li class="tab"><a href="#reports">Reports</a></li>
       </ul>
     </nav>
   </script>
 
    <!--Sign In Script-->
     <script id="signIn-template" type="text/x-handlebars-template">
-        <form id="signIn" action="">
+        <article class="page is-visible" id="signIn">
+          <form id="signInForm" action="">
             <div>
                 <label for="username">Username: </label>
                 <input id="username" type="text" value=""/>
@@ -58,7 +72,8 @@
             <div class="error">
             	{{#list errors}}{{defaultUserMessage}}{{/list}}
             </div>
-        </form>
+          </form>
+        </article>
     </script>
 
   <script type="text/x-handlebars-template" id="view-nav-utility">
