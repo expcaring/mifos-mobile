@@ -2,50 +2,57 @@
 <!--[if IEMobile 7 ]>    <html class="no-js iem7" lang="en_US"> <![endif]-->
 <!--[if (gt IEMobile 7)|!(IEMobile)]><!--> <html class="no-js" lang="en_US"> <!--<![endif]-->
 <head>
-	<meta charset="UTF-8">
-	<title>Mifos Mobile</title>
-	<meta name="description" content="">
+  <meta charset="UTF-8">
+  <title>Mifos Mobile</title>
+  <meta name="description" content="">
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width">
-  <meta http-equiv="cleartype" content="on">	
+  <meta http-equiv="cleartype" content="on">  
   <link rel="stylesheet" href="css/" />
-  <script src="js/vendor/modernizr-2.6.1.min.js"></script>	
+  <script src="js/vendor/modernizr-2.6.1.min.js"></script>  
 </head>
 <body>
-	<header class="site-banner" role="banner">
-		<a href="">Logo Link</a>
-		<nav class="main-nav">
-			<ul>
-				<li class="tab"><a href=""></a></li>
-				<li class="tab"><a href=""></a></li>
-				<li class="tab"><a href=""></a></li>
-				<li class="tab"><a href=""></a></li>
-			</ul>
-		</nav>
-	</header>
+  <div class="site-main" role="application">
+    <header class="site-banner" id="siteBanner" role="banner">
+      <a href="" class="trigger-off-canvas logo ir">Mifos</a>
+      
+    </header>
+    
+      <!-- Templates go here -->
+      <aside class="off-canvas column" role="complementary">
+        <!-- Navs go here -->
+      </aside>
 
+      <section class="content column" role="main">
+        <!-- Main  -->
+      </section>
+  </div>
 
-	<footer class="site-footer" role="contentinfo">
-		<!-- Footer -->
-	</footer>
-    <!--Sign In Script-->
-    <script id="signIn-template" type="text/x-handlebars-template">
-        <form id="signIn" action="">
-            <div>
-                <label for="username">Username: </label>
-                <input id="username" type="text" value=""/>
-            </div>
-            <div>
-                <label for="password">Password: </label>
-                <input id="password" type="password" value=""/>
-            </div>
-            <button type="submit">Submit</button>
-            <div class="error">{{errorMessage}}</div>
-        </form>
-    </script>
+  <footer class="site-footer" role="contentinfo">
+    <!-- Footer -->
+  </footer>
+  <script id="view-nav-main" type="text/x-handlebars-template">
+    <nav class="main-nav">
+      <ul>
+        <li class="tab"><a href="#">Clients</a></li>
+        <li class="tab"><a href="">User Administration</a></li>
+        <li class="tab"><a href="">Organisation Administration</a></li>
+        <li class="tab"><a href="">Reports</a></li>
+      </ul>
+    </nav>
+  </script>
 
+  <script type="text/x-handlebars-template" id="view-nav-utility">
+    <nav class="utility-nav">
+      <ul>
+        <li><a href="#">Culture</a></li>
+        <li><a href="#">Mifos</a></li>
+        <li><a href="#">Sign Out</a></li>
+      </ul>
+    </nav>
+  </script>
 
-	<script src="scripts/zepto-1-rc-1.min.js"></script>
+  <script src="scripts/zepto-1-rc-1.min.js"></script>
 </body>
 </html>
