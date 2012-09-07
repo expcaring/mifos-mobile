@@ -87,7 +87,7 @@
     </nav>
   </script>
 
-    <script id="listUsers-template" type="text/x-handlebars-template">
+   <script id="listUsers-template" type="text/x-handlebars-template">
         <ul class="users_list">
             {{#each users}}
             <li>
@@ -103,8 +103,19 @@
             </li>
             {{/each}}
         </ul>
-    </script>
+   </script>
 
+  <script id="userMenu-template" type="text/x-handlebars-template">
+      <a href="javascript:void(null);" id="viewUsers">View Users</a>
+      <a href="javascript:void(null);" id="addUser">Add User</a>
+      <a href="javascript:void(null);" id="viewRoles">View Roles</a>
+      <a href="javascript:void(null);" id="addRole">Add Role</a>
+      <a href="javascript:void(null);" id="viewPermission">View Permissions</a>
+  </script>
+
+  <script id="emptyClientPage" type="text/x-handlebars-template">
+      <label>Client List would go here!</label>
+  </script>
 
 
   <script src="scripts/zepto-1-rc-1.min.js"></script>
