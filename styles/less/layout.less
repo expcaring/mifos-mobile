@@ -3,3 +3,44 @@
    Layouts - Mobile First
    ========================================================================== */
 
+* {.box-sizing;}
+html {background: lighten(@grey,30%)}
+body {
+  min-height: 100%;
+  margin: 0; 
+}
+
+.column, .row {
+  width: 100%;
+  .padding(tr,@baseFontPx,0,24);
+
+  + .row {padding-left: 0; padding-right: 0}
+}
+.column {
+
+}
+
+/* Header
+========================================================================== */
+.site-header {
+  background: #fff;
+
+  .logo {
+    display: block;
+    .width(@baseFontPx,112);
+    .height(@baseFontPx,48);
+    background: url(images/logo.png) 0 50% no-repeat;
+    .background-size(100% auto);
+  }
+}
+
+
+/* Main Content 
+========================================================================== */
+[role="main"] {
+  overflow: hidden;
+  max-width: 100%;
+
+}
+
+

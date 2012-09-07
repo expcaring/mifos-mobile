@@ -642,6 +642,50 @@ b {
 /* ==========================================================================
    Layouts - Mobile First
    ========================================================================== */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html {
+  background: #a9aaab;
+}
+body {
+  min-height: 100%;
+  margin: 0;
+}
+.column,
+.row {
+  width: 100%;
+  padding: 0em 1.8461538461538463em;
+}
+.column + .row,
+.row + .row {
+  padding-left: 0;
+  padding-right: 0;
+}
+/* Header
+========================================================================== */
+.site-header {
+  background: #fff;
+}
+.site-header .logo {
+  display: block;
+  width: 8.615384615384615em;
+  height: 3.6923076923076925em;
+  background: url(images/logo.png) 0 50% no-repeat;
+  -webkit-background-size: 100% auto;
+  -moz-background-size: 100% auto;
+  -o-background-size: 100% auto;
+  background-size: 100% auto;
+}
+/* Main Content 
+========================================================================== */
+[role="main"] {
+  overflow: hidden;
+  max-width: 100%;
+}
 /* ==========================================================================
    600 Media Query
    ========================================================================== */
