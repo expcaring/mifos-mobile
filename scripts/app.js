@@ -23,7 +23,7 @@ var jqxhr = $.ajax({
 mifos.api.executeAjaxRequest = function(request, requestType, inputData, successFunction, errorFunction)
 {
 	var jqxhr = $.ajax({
-        url : mifos.api.url +  request,
+        url : mifos.api.url +  request + mifos.api.tenantId,
         type : requestType, //POST, GET, PUT or DELETE
         contentType : "application/json; charset=utf-8",
         dataType : 'json',
