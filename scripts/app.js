@@ -1,7 +1,7 @@
 var mifos = {};
 mifos.url = "https://ec2-46-137-62-163.eu-west-1.compute.amazonaws.com:8443/mifosng-provider/api/v1/";
 mifos.tenantId = "&tenantIdentifier=default"
-mifos.users = "users/"
+mifos.users = "users"
 
 mifos.login = function(username, password)
 {
@@ -116,15 +116,31 @@ mifos.error = function(jsonResponse)
     mifos.render("#mainContent", html);
 }
 
+mifos.getRoles = function()
+{
+    mifos.executeAjaxRequest("roles", "GET", "{}", mifos.getRolesSuccess);
+}
+
+mifos.getRolesSuccess = function(jsonResponse) 
+{
+    return jsonResponse;
+}
+
 mifos.userDetails = function(id, fields)
 {
 	var request = mifos.users + "/" + userId + "?fields=" + fields;
-	mifos.executeAjaxRequest(request, "GET", {}, mifos.userDetailsSuccess);
+	mifos.executeAjaxRequest(request, "GET", "{}", mifos.userDetailsSuccess);
 }
 
 mifos.userDetailsSuccess = function(jsonResponse)
 {
-	//TODO
+    var user = jsonResponse;
+    var roles = mifos.getRoles();
+    var data = {"user": user, "roles" : roles};
+    var source = $("#user-detail-template").html();
+    var template = Handlebars.compile(source);
+    var html = template(data);
+    mifos.render("#users");
 }
 
 $(document).ready(function(){
