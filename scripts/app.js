@@ -13,11 +13,28 @@ var jqxhr = $.ajax({
         cache : false,
         success : function(data, textStatus, jqXHR) {     
             mifos.api.basicAuthKey = data.base64EncodedAuthenticationKey;
+            if(data.error)
+            {
+                //Show error message
+                var errorMessage = data.error[0].defaultUserMessage;
+                mifos.api.loginFailed(errorMessage);
+            }
+            //Load main menu
         },
         error : function(jqXHR, textStatus, errorThrown) {
-            //
+            //Show error message
+            mifos.api.login.failed("loginFailed");
+
         }
     });
+}
+
+mifos.api.loginFailed(error)
+{
+    var source   = $("#signIn-template").html();
+    var template = Handlebars.compile(source);
+    var html = template(error);
+    $("mainContent").append(html);
 }
 
 mifos.api.executeAjaxRequest = function(request, requestType, inputData, successFunction, errorFunction)
