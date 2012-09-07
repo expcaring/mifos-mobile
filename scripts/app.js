@@ -5,7 +5,7 @@ mifos.api.users = "api/v1/users"
 mifos.api.login = function(username, password)
 {
 var jqxhr = $.ajax({
-        url : mifos.api.url + "authentication?username=" + username + "&password=" + password + mifos.api.tenantId,
+        url : mifos.api.url + "authentication?username=" + username + "&password=" + password,
         type : 'POST',
         contentType : "application/json; charset=utf-8",
         dataType : 'json',
@@ -23,7 +23,7 @@ var jqxhr = $.ajax({
 mifos.api.executeAjaxRequest = function(request, requestType, inputData, successFunction, errorFunction)
 {
 	var jqxhr = $.ajax({
-        url : mifos.api.url +  request + mifos.api.tenantId,
+        url : mifos.api.url +  request,
         type : requestType, //POST, GET, PUT or DELETE
         contentType : "application/json; charset=utf-8",
         dataType : 'json',
@@ -58,7 +58,6 @@ mifos.api.userDetails = function(id, fields)
 	var request = mifos.api.users + "/" + userId + "?fields=" + fields;
 	mifos.api.executeAjaxRequest = function(request, "GET", {}, mifos.api.userDetailsSuccess, mifos.api.userDetailsError);
 }
-
 
 mifos.api.userDetailsSuccess = function(jsonResponse)
 {
