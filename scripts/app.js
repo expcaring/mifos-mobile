@@ -13,7 +13,6 @@ var jqxhr = $.ajax({
       data : "{}",
       cache : false,
       success : function(data, textStatus, jqXHR) {     
-            alert("Success!");
           mifos.basicAuthKey = data.base64EncodedAuthenticationKey;
           if(data)
           {
@@ -36,8 +35,7 @@ var jqxhr = $.ajax({
       },
       error : function(jqXHR, textStatus, errorThrown) {
           //Show error message
-          alert("Fail!");
-          mifos.loginFailed({errors : [{defaultUserMessage : "loginFailed"}]});
+          mifos.loginFailed({errors : [{defaultUserMessage : "Login failed"}]});
       }
   });
 }
@@ -70,10 +68,10 @@ mifos.loginFailed = function(data)
      {
         html = template({errors : []});
      }
-     mifo.render("#mainContent", html);
+     mifos.render("#mainContent", html);
 }
 
-mifos.executeAjaxRequest = function(request, requestType, inputData, successFunction, errorFunction)
+mifos.executeAjaxRequest = function(request, requestType, inputData, successFunction)
 {
 	var jqxhr = $.ajax({
         url : mifos.url +  request + mifos.tenantId,
@@ -86,14 +84,14 @@ mifos.executeAjaxRequest = function(request, requestType, inputData, successFunc
                 xhr.setRequestHeader("Authorization", "Basic " + mifos.basicAuthKey);
         },
         success : successFunction(xhr),
-        error : errorFunction(xhr)
+        error : mifos.error(xhr)
     });
 }
 
 mifos.listUsers = function(fields)
 {
 	var request = fields ? mifos.users + "?" + "fields=" + fields : mifos.users;
-	mifos.executeAjaxRequest(request, "GET", {}, mifos.listUsersSuccess, mifos.listUsersError);
+	mifos.executeAjaxRequest(request, "GET", {}, mifos.listUsersSuccess);
 }
 
 mifos.listUsersSuccess = function(jsonResponse)
@@ -101,29 +99,33 @@ mifos.listUsersSuccess = function(jsonResponse)
 	//TODO
 }
 
-mifos.listUsersError = function(jsonResponse)
+mifos.error = function(jsonResponse)
 {
-	//TODO
+    var data;
+    if(jsonResponse && jsonResponse.errors)
+    {
+        data = jsonResponse;
+    }
+    else
+    {
+        data = {errors : [{defaultUserMessage : "Operation failed"}]};
+    }
+	var source = $("#error-template").html();
+    var template = Handlebars.compile(source);
+    var html = template(data);
+    mifos.render("#mainContent", html);
 }
 
 mifos.userDetails = function(id, fields)
 {
 	var request = mifos.users + "/" + userId + "?fields=" + fields;
-	mifos.executeAjaxRequest(request, "GET", {}, mifos.userDetailsSuccess, mifos.userDetailsError);
+	mifos.executeAjaxRequest(request, "GET", {}, mifos.userDetailsSuccess);
 }
 
 mifos.userDetailsSuccess = function(jsonResponse)
 {
 	//TODO
 }
-
-mifos.userDetailsError = function(jsonResponse)
-{
-	//TODO
-}
-
-
-
 
 $(document).ready(function(){
     var source   = $("#signIn-template").html();

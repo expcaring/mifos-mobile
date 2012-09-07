@@ -117,9 +117,16 @@
       <label>Client List would go here!</label>
   </script>
 
+<!-- Error template-->
+<script id="error-template" type="text/x-handlebars-template">
+   <div class="error">
+      {{#list errors}}{{defaultUserMessage}}{{/list}}
+    </div>
+</script>
 
   <script src="scripts/zepto-1-rc-1.min.js"></script>
   <script src="scripts/handlebars-1.0.0.beta.6.js"></script>
   <script src="scripts/app.js"></script>
+  <script src="scripts/helper.js"></script>
 </body>
 </html>
