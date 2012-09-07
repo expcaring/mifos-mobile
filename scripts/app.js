@@ -13,6 +13,7 @@ var jqxhr = $.ajax({
       data : "{}",
       cache : false,
       success : function(data, textStatus, jqXHR) {     
+            alert("Success!");
           mifos.basicAuthKey = data.base64EncodedAuthenticationKey;
           if(data)
           {
@@ -30,6 +31,7 @@ var jqxhr = $.ajax({
       },
       error : function(jqXHR, textStatus, errorThrown) {
           //Show error message
+          alert("Fail!");
           mifos.loginFailed({errors : [{defaultUserMessage : "loginFailed"}]});
       }
   });
