@@ -2,6 +2,7 @@ var mifos = {};
 mifos.url = "https://ec2-46-137-62-163.eu-west-1.compute.amazonaws.com:8443/";
 mifos.tenantId = "&tenantIdentifier=default"
 mifos.users = "api/v1/users"
+
 mifos.login = function(username, password)
 {
 var jqxhr = $.ajax({
@@ -104,4 +105,8 @@ $(document).ready(function(){
     var template = Handlebars.compile(source);
     var html = template({errors : []});
     $("#mainContent").append(html);
+    $('#signInForm').on('submit',function(){
+        var data = this.serializeArray();
+        mifos.login(data.username,user.password);
+    })
 });
