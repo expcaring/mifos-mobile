@@ -60,15 +60,15 @@
     <script id="signIn-template" type="text/x-handlebars-template">
         <article class="page is-visible" id="signIn">
           <form id="signInForm" action="">
-            <div>
-                <label for="username">Username: </label>
-                <input id="username" name="username" type="text" value=""/>
-            </div>
-            <div>
-                <label for="password">Password: </label>
-                <input id="password" name="password" type="password" value=""/>
-            </div>
-            <button type="submit">Submit</button>
+            <label>
+              <span class="visuallyhidden">Username</span>
+              <input id="username" name="username" type="text" value="" placeholder="Username"/>
+            </label>
+            <label>
+              <span class="visuallyhidden">Password</span>
+              <input id="password" name="password" type="password" value="" placeholder="Password"/>
+            </label>
+            <button type="submit">Sign In</button>
             <div class="error">
             	{{#list errors}}{{defaultUserMessage}}{{/list}}
             </div>

@@ -640,6 +640,46 @@ b {
   color: #f06601;
 }
 /* ==========================================================================
+   Forms
+   ========================================================================== */
+/* Reset appearance of certain fields */
+select,
+button,
+input[type="button"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+}
+/* basic elements */
+input[type="text"],
+input[type="password"],
+input[type="url"],
+input[type="email"],
+input[type="number"],
+input[type="date"],
+textarea,
+select,
+button,
+input[type="button"] {
+  width: 100%;
+  -webkit-border-radius: 0.3076923076923077em;
+  -moz-border-radius: 0.3076923076923077em;
+  -ms-border-radius: 0.3076923076923077em;
+  -o-border-radius: 0.3076923076923077em;
+  border-radius: 0.3076923076923077em;
+  border: 0.07692307692307693em solid #2a2a2b;
+  margin-bottom: 0.9230769230769231em;
+  padding: 0.9230769230769231em 1.3846153846153846em;
+}
+/* Buttons
+  ========================================================================== */
+/* A bit of style... */
+button[type="submit"] {
+  border: 0.07692307692307693em solid #80a82e;
+  background: #b1d567;
+}
+/* ==========================================================================
    Layouts - Mobile First
    ========================================================================== */
 * {
@@ -667,14 +707,16 @@ body {
 }
 /* Header
 ========================================================================== */
-.site-header {
+.site-banner {
   background: #fff;
+  padding-top: 0.9230769230769231em;
+  padding-bottom: 0.9230769230769231em;
 }
-.site-header .logo {
+.site-banner .logo {
   display: block;
   width: 8.615384615384615em;
   height: 3.6923076923076925em;
-  background: url(images/logo.png) 0 50% no-repeat;
+  background: url(../images/logo.png) 0 50% no-repeat;
   -webkit-background-size: 100% auto;
   -moz-background-size: 100% auto;
   -o-background-size: 100% auto;
@@ -685,6 +727,7 @@ body {
 [role="main"] {
   overflow: hidden;
   max-width: 100%;
+  padding-top: 1.8461538461538463em;
 }
 /* ==========================================================================
    600 Media Query

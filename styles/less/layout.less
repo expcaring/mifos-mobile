@@ -22,14 +22,15 @@ body {
 
 /* Header
 ========================================================================== */
-.site-header {
+.site-banner {
   background: #fff;
-
+  .padding(t,@baseFontPx,12,);
+  .padding(b,@baseFontPx,12,);
   .logo {
     display: block;
     .width(@baseFontPx,112);
     .height(@baseFontPx,48);
-    background: url(images/logo.png) 0 50% no-repeat;
+    background: url(../images/logo.png) 0 50% no-repeat;
     .background-size(100% auto);
   }
 }
@@ -40,7 +41,7 @@ body {
 [role="main"] {
   overflow: hidden;
   max-width: 100%;
-
+  .padding(t,@baseFontPx,24);
 }
 
 
