@@ -25,7 +25,7 @@ var jqxhr = $.ajax({
               else
               {
                   //Load main menu
-                  
+                  mifos.loadHome();
               }
           }
       },
@@ -35,6 +35,21 @@ var jqxhr = $.ajax({
           mifos.loginFailed({errors : [{defaultUserMessage : "loginFailed"}]});
       }
   });
+}
+
+mifos.render = function(elem, html)
+{
+    $(elem).empty();
+    $(elem).append(html);
+}
+
+mifos.loadHome = function()
+{
+    var source   = $("#view-nav-main").html();
+    var template = Handlebars.compile(source);
+    var html = template();
+    $('article').removeClass("isVisible");
+    mifos.render("#sidebarContent", html);
 }
 
 mifos.loginFailed = function(data)
@@ -50,7 +65,7 @@ mifos.loginFailed = function(data)
      {
         html = template({errors : []});
      }
-    $("mainContent").append(html);
+     mifo.render("#mainContent", html);
 }
 
 mifos.executeAjaxRequest = function(request, requestType, inputData, successFunction, errorFunction)
@@ -106,12 +121,12 @@ $(document).ready(function(){
     var source   = $("#signIn-template").html();
     var template = Handlebars.compile(source);
     var html = template({errors : []});
-    $("#mainContent").append(html);
+    mifos.render('#mainContent', html);
     
     $(document).on('submit','#signInForm',function(e){
         e.preventDefault();
         var data = $(this).serializeArray();
         console.log(this);
-        mifos.login('mifos','password');
+        mifos.login(data.username, data.password);
     })
 });
