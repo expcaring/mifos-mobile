@@ -1,0 +1,131 @@
+/* 
+ * TYPOGRAPHY 
+ */  
+
+ 
+html {
+ font-size: @rootFontSize;//sets the percentage which all ems are based upon
+ line-height: 1.45;
+}
+ 
+/* Accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
+a, a:visited {color: @link; text-decoration: none;}
+a:hover, a:focus, a:active {color: @linkHover; text-decoration: underline; outline: none} 
+
+/***********************************************************************************************
+	Headlines
+***********************************************************************************************/  
+h1,h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  font-weight: 500;
+  margin: 0;
+}
+.ltie8 {
+  h1,h2, h3, h4, h5, h6 {
+    font-weight: bold;
+  }
+}
+h1, .h1 {
+  #font > .size(@h1);
+  .margin(b,@h1,24);
+  
+  &.display {
+    #font > .size(@h1Display);
+    .margin(b,@h1Display,24);
+  }
+}
+
+h2, .h2 { 
+  #font > .size(@h2); 
+  line-height: 1.25;
+  .margin(b,@h2,24)
+} 
+h3, .h3 { 
+  #font > .size(@h3); 
+  .margin(b,@h3,24)
+}
+h4, dt, .h4 { 
+  #font > .size(@h4);
+  .margin(b,@h4,18)
+}
+h5, .h5 { 
+  #font > .size(@h5); 
+  .margin(b,@h5,18)
+}
+h6, .h6 {
+  #font > .size(@h6);
+  line-height: 1.7;
+  .margin(b,@h6,12);
+  font-weight: bold; 
+}
+
+h5, p.secondary {line-height: 1.4}
+
+/* Headline Bars */
+.headline-bar {
+  background-color: @moduleBlue;
+	.border-radius(tlr,@h3,4,4);
+  color: #fff;
+  #font > .size(@h3);
+  .margin(trb,@h3,0,0,24);
+  .padding(tr,@h3,6,12);
+}
+.headline-bar-alt {
+  background-color: @headline;
+  color: @text;
+}
+
+  
+p {
+  margin: 0;
+  + p {
+    .margin(trbl,@baseFontPx,24,0,0,0);
+  }
+}                                 
+// Smaller paragraph sizes  
+ul, ol {
+  .margin(a,@baseFontPx,0);
+  
+  li {.padding(trb,@baseFontPx,0,0,6);}   
+  
+  ul, ol {                       
+    .margin(a,@baseFontPx,12);
+  } 
+  &.nobullet {
+    padding-left: 0;
+    margin-left: 0; 
+    margin-right: 0; 
+    list-style: none;  
+  }
+}
+p + ul, p + ol {
+  .margin(t,@baseFontPx,24);
+}
+// Secondary Type styles
+ul.secondary {
+  .margin(trbl,13,0,0,24,0);
+  li {
+   .padding(trb,13,0,6,6); 
+  }
+}
+
+dl {
+  dd {margin-left: 0}  
+} 
+
+/* Utility Classes */
+.secondary {
+  #font > .size(13);
+  line-height: 1.45;
+}
+
+.larger {font-size: 120%;}
+small { #font > .size(11) }
+.bold, strong, b {font-weight: bold;}
+.underline {text-decoration: underline;} 
+
+/* Text Alert Classes  */
+.light {color: @alertDefault}
+.bold {color: @alertBold}
+.success {color: @alertSuccess}
+.important {color: @alertImportant}

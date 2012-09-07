@@ -1,0 +1,1049 @@
+
+/* ==========================================================================
+   Global Mixins and Variables
+   ========================================================================== */
+
+
+/* GRID AND SITE SETUP
+========================================================================== */
+/* Sets max-width on site wrapper */
+@absMaxWidth: 1104px;
+/* Root Font Size */
+@baseFontPx: 13;          
+/*Root pixel line-height target */
+@baseLeadingTargetPx: 18; 
+/* Converts the above into a percentage; used to set font-size on HTML element */
+@rootFontSize: (@baseFontPx / 16) * 100 + 0%;
+
+/* Convert pixel line-height to Ems */
+@baselineEm: @baseLeadingTargetPx / @baseFontPx + 0em;		
+
+
+
+/* Global Color Variables
+========================================================================== */
+
+/* Colors */
+ @text: darken(@grey,30%);
+ @link: #03aae1;
+ @linkHover: lighten(@link,20%);
+ @linkVisited: darken(@link,20%);
+ @grey: #5c5d5f;
+ 
+ @brandBlue: #006eb6;
+ @brandGreen: #b1d567
+ @brandGreenDark: #00ae4c;
+
+ @error: #CC0000; 
+  
+ @alertDefault: @moduleGrey;
+ //@alertDefaultBg: ;
+ @alertLight: lighten(@alertDefault,10%);
+ @alertBold: @brandBlue;
+ @alertInfo: #246497;
+ @alertInfoBg: spin(lighten(desaturate(@alertInfo,32%),56%),-16);
+ @alertSuccess: #009933;
+ @alertSuccessBg: desaturate(lighten(@alertSuccess,60%),65%);
+ @alertWarn: #FFEFB2;
+ @alertWarnBg: desaturate(lighten(@alertWarn,10%),40%);
+ @alertImportant: #F06601;
+ @alertError: #ed1c24; 
+ @alertErrorBg: desaturate(lighten(@alertError,45%),55%);
+ 
+
+/* Fonts and Sizes
+========================================================================== */
+/**
+  * Font Size and Family Stacks:
+  *
+  * Font Size:
+  *     #font > .size(20);
+  *
+  *     Outputs 20px converted to ems
+  * 
+  * Line Height:
+  *     #font > .line-height(20,1);
+  *
+  *     Outputs multiples of converted to ems
+  * 
+  * Font Stacks:
+  *     #font > .primary-stack  
+  *
+  *    Outputs font-family: ...
+  */
+ #font() {
+   .size(
+     @target: @baseFontPx,
+     @context: @baseFontPx 
+   ) {
+     @emFontSize: (@target / @context);
+     font-size: @emFontSize + 0em;
+   } 
+   .line-height(
+     @target: @baseFontPx, 
+     @lineMultiple: 1
+   )
+   {
+     @emFontSize: (@target / @baseFontPx);
+     line-height: (@baseLeadingTargetPx / @baseFontPx) / @emFontSize * @lineMultiple + 0em;
+   }
+   .primary-stack() {
+     font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+   }   
+ }
+ 
+ /**
+  * Predefined Font Sizes
+  * 
+  * Example Usage:
+  *     font-size: @h1;
+  */
+ @h1: 30;
+ @h1Display: 45;
+ @h2: 24;
+ @h3: 20;
+ @h4: 15;
+ @h5: 13;
+ @h6: 11; 
+ /* Body Copy */
+ @copySmall: 13;
+ 
+/* Grid Mixins and Variables
+========================================================================== */
+ #grid() {
+   /* Full-width rows: #grid > .column(NumberOfColumnsToSpan); */
+   .column(
+  	 @count: 1,               
+     @cols: 12
+   ) {
+    width: (100 / @cols) * @count + 0%;
+   }
+
+   /* Inset/Outset Columns*/ 
+   .push(
+     @count: 1,               
+  	 @cols: 12
+   ){
+     margin-left: (100 / @cols) * @count + 0%;
+   } 
+   .pull(
+     @count: 1,               
+  	 @cols: 12
+   ){
+     margin-left: -(100 / @cols) * @count + 0%; 
+   }     
+ }
+
+ /* Grid Columns Predefined  */ 
+ .cols1(@cols:12) {#grid > .column(1,@cols)}
+ .cols2(@cols:12) {#grid > .column(2,@cols)}
+ .cols3(@cols:12) {#grid > .column(3,@cols)}
+ .cols4(@cols:12) {#grid > .column(4,@cols)}
+ .cols5(@cols:12) {#grid > .column(5,@cols)}
+ .cols6(@cols:12) {#grid > .column(6,@cols)}
+ .cols7(@cols:12) {#grid > .column(7,@cols)}
+ .cols8(@cols:12) {#grid > .column(8,@cols)}
+ .cols9(@cols:12) {#grid > .column(9,@cols)}
+ .cols10(@cols:12) {#grid > .column(10,@cols)}
+ .cols11(@cols:12) {#grid > .column(11,@cols)}
+ .cols12(@cols:12) {#grid > .column(12,@cols)}  
+ 
+ /* Push Cols */
+ .in1(@cols:12) {#grid > .push(1,@cols)}
+ .in2(@cols:12) {#grid > .push(2,@cols)}
+ .in3(@cols:12) {#grid > .push(3,@cols)}
+ .in4(@cols:12) {#grid > .push(4,@cols)}
+ .in5(@cols:12) {#grid > .push(5,@cols)}
+ .in6(@cols:12) {#grid > .push(6,@cols)}
+ .in7(@cols:12) {#grid > .push(7,@cols)}
+ .in8(@cols:12) {#grid > .push(8,@cols)}
+ .in9(@cols:12) {#grid > .push(9,@cols)}
+ .in10(@cols:12) {#grid > .push(10,@cols)}
+ .in11(@cols:12) {#grid > .push(11,@cols)}
+ 
+ /* Pull Cols */
+ .out1(@cols:12) {#grid > .pull(1,@cols)}
+ .out2(@cols:12) {#grid > .pull(2,@cols)}
+ .out3(@cols:12) {#grid > .pull(3,@cols)}
+ .out4(@cols:12) {#grid > .pull(4,@cols)}
+ .out5(@cols:12) {#grid > .pull(5,@cols)}
+ .out6(@cols:12) {#grid > .pull(6,@cols)}
+ .out7(@cols:12) {#grid > .pull(7,@cols)}
+ .out8(@cols:12) {#grid > .pull(8,@cols)}
+ .out9(@cols:12) {#grid > .pull(9,@cols)}
+ .out10(@cols:12) {#grid > .pull(10,@cols)}
+ .out11(@cols:12) {#grid > .pull(11,@cols)}
+ 
+
+
+
+// Height Mixins
+// ==========================================================================
+
+//--- Height ---
+.height(
+  @target: @baseFontPx, 
+  @h 
+) {
+  height: (@h / @target) + 0em;
+} 
+
+//--- Width ---
+.width(
+  @target: @baseFontPx, 
+  @w 
+) {
+  width: (@w / @target) + 0em;
+} 
+
+//--- Max Width ---
+.max-height(
+  @target: @baseFontPx, 
+  @h 
+) {
+  max-height: (@h / @target) + 0em;
+} 
+
+//--- Max Width ---
+.max-width(
+  @target: @baseFontPx, 
+  @w 
+) {
+  max-width: (@w / @target) + 0em;
+}
+ 
+//--- Min Width ---
+.min-height(
+  @target: @baseFontPx, 
+  @h 
+) {
+  min-height: (@h / @target) + 0em;
+} 
+
+//--- Min Width ---
+.min-width(
+  @target: @baseFontPx, 
+  @w 
+) {
+  min-width: (@w / @target) + 0em;
+} 
+
+//--- ELEMENT POSITION --- 
+// Use when you need to set specific position lengths in ems. DO NOT USE FOR % values. 
+// For percentage and zero values, use plain CSS, not this mixin
+//
+// USAGE:
+// .pos(%SIDE%,@target,@t[,@r,@b,@l])
+//
+// @params
+// %SIDE% [required]: Used to identify which side to apply trbl (top, right, bottom and left), 
+// @target [required]: font-size of element for em conversion. Default: @baseFontPx
+// @t, @r, @b, @l [required based on number of sides you're setting]: Length in pixels used for Top, Right, Bottom, and Left position. Will be converted to ems
+
+//--- All Four Sides ---
+.pos(
+  trbl,
+  @target: @baseFontPx, 
+  @t,
+  @r,
+  @b,
+  @l 
+) {
+  top: (@t / @target) + 0em;                                                     
+  right: (@r / @target) + 0em;
+  bottom: (@b / @target) + 0em;
+  left: (@l / @target) + 0em;
+}
+
+//--- Top ---
+.pos(
+  t,
+  @target: @baseFontPx, 
+  @t
+) {
+  top: (@t / @target) + 0em;
+}
+
+//--- Right ---
+.pos(
+  r,
+  @target: @baseFontPx, 
+  @r
+) {
+  right: (@r / @target) + 0em;
+}
+
+//--- Bottom ---
+.pos(
+  b,
+  @target: @baseFontPx, 
+  @b
+) {
+  bottom: (@b / @target) + 0em;
+}
+
+//--- Left ---
+.pos(
+  l,
+  @target: @baseFontPx, 
+  @l
+) {
+  left: (@l / @target) + 0em;
+}
+
+//--- Top-Right ---
+.pos(
+  tr,
+  @target: @baseFontPx, 
+  @t,
+  @r
+) {
+  top: (@t / @target) + 0em;
+  right: (@r / @target) + 0em;
+}
+
+//--- MARGINS --- 
+// %SIDE% : [required] which side(s) to apply margin. values are: a (shorthand single value), trbl (top-right-bottom-left)
+//    tr (top-right), trb (top-right-bottom), t (top), r (right), b (bottom), l (left)
+// @target: font-size of element for em conversion context. Default: @baseFontPx 
+// @t: sets top margin amount in pixels (exclude "px")
+// @r: sets right margin amount
+// @b: sets bottom margin
+// @l: sets left margin
+
+
+// Top + Right 
+// Only Single Margin Supplied
+.margin(
+  a,
+  @target: @baseFontPx,
+  @t
+) {
+  margin: (@t / @target) + 0em;
+}
+// Top Right
+.margin(
+  tr,
+  @target: @baseFontPx,
+  @t,
+  @r
+) {
+  margin: (@t / @target) + 0em (@r / @target) + 0em ;
+}
+// Top Right Bottom
+.margin(
+  trb,
+  @target: @baseFontPx,
+  @t,
+  @r,
+  @b
+) {
+  margin: (@t / @target) + 0em (@r / @target) + 0em (@b / @target) + 0em;
+}
+// All Four - single property supplied  
+.margin(
+  trbl,
+  @target: @baseFontPx,
+  @t,
+  @r,
+  @b,
+  @l
+) {
+  margin: (@t / @target) + 0em (@r / @target) + 0em (@b / @target) + 0em (@l / @target) + 0em;
+}
+// Top 
+.margin(
+  t,
+  @target: @baseFontPx,
+  @t
+) {
+  margin-top: (@t / @target) + 0em;
+}
+// Right 
+.margin(
+  r,
+  @target: @baseFontPx,
+  @r
+) {
+  margin-right: (@r / @target) + 0em;
+}
+// Bottom 
+.margin(
+  b,
+  @target: @baseFontPx,
+  @b
+) {
+  margin-bottom: (@b / @target) + 0em;
+}
+// Left 
+.margin(
+  l,
+  @target: @baseFontPx,
+  @l
+) {
+  margin-left: (@l / @target) + 0em;
+}
+
+
+
+//--- PADDING ---
+// Same as margin, only with padding :) 
+
+// Only Single Padding Supplied  
+.padding(
+  a,
+  @target: @baseFontPx,
+  @t
+) {
+  padding: (@t / @target) + 0em;
+}
+// Top Right, sets shorthand for top + right
+.padding(
+  tr,
+  @target: @baseFontPx,
+  @t,
+  @r
+) {
+  padding: (@t / @target) + 0em (@r / @target) + 0em;
+}
+// Top Right Bottom, sets shorthand for top + right
+.padding(
+  trb,
+  @target: @baseFontPx,
+  @t,
+  @r,
+  @b
+) {
+  padding: (@t / @target) + 0em (@r / @target) + 0em (@b / @target) + 0em;
+}
+// Top Right Bottom Left
+.padding(
+  trbl,
+  @target: @baseFontPx,
+  @t,
+  @r,
+  @b,
+  @l
+) {
+  padding: ((@t / @target) + 0em) ((@r / @target) + 0em) ((@b / @target) + 0em) ((@l / @target) + 0em);
+}
+// Top
+.padding(
+  t,
+  @target: @baseFontPx,
+  @t
+) {
+  padding-top: (@t / @target) + 0em;
+}
+// Right
+.padding(
+  r,
+  @target: @baseFontPx,
+  @r
+) {
+  padding-right: (@r / @target) + 0em;
+}
+// Bottom
+.padding(
+  b,
+  @target: @baseFontPx,
+  @b
+) {
+  padding-bottom: (@b / @target) + 0em;
+}
+// Left
+.padding(
+  l,
+  @target: @baseFontPx,
+  @l
+) {
+  padding-left: (@l / @target) + 0em;
+}
+
+
+//--- Borders ---
+// Make sure to supply the element's font-size, or @baseFontPx. This will ensure you get proper conversion
+.border(
+  a, 
+  @target: @baseFontPx,
+  @t: 1,
+  @color: transparent,
+  @type: solid  
+) {
+  border: ((@t / @target) + 0em) @type @color;
+}
+//Top Right
+.border(
+  tr, 
+  @target: @baseFontPx,
+  @t: 1,
+  @r:1,
+  @color: transparent,
+  @type: solid  
+) {
+  border: ((@t / @target) + 0em) @type @color;
+  border-width: ((@t / @target) + 0em) ((@r / @target) + 0em); 
+}
+//Top Right Bottom
+.border(
+  trb, 
+  @target: @baseFontPx,
+  @t,
+  @r,
+  @b,
+  @color: transparent,
+  @type: solid
+) { 
+  border: ((@t / @target) + 0em) @type @color;
+  border-width: ((@t / @target) + 0em) ((@r / @target) + 0em) ((@b / @target) + 0em) ((@r / @target) + 0em); 
+}
+//Top Right Bottom Left
+.border(
+  trbl, 
+  @target: @baseFontPx,
+  @t,
+  @r,
+  @b,
+  @l,
+  @color: transparent,
+  @type: solid 
+){
+  border: ((@t / @target) + 0em) @type @color;
+  border-width: ((@t / @target) + 0em) ((@r / @target) + 0em) ((@b / @target) + 0em) ((@l / @target) + 0em); 
+}
+//Top
+.border(
+  t, 
+  @target: @baseFontPx,
+  @t,
+  @color: transparent,
+  @type: solid  
+) {
+  border-top: ((@t / @target) + 0em) @type @color;
+}
+//Right
+.border(
+  r, 
+  @target: @baseFontPx,
+  @r,
+  @color: transparent,
+  @type: solid
+) {
+  border-right: ((@r / @target) + 0em) @type @color;
+}
+//Bottom
+.border(
+  b, 
+  @target: @baseFontPx,
+  @b,
+  @color: transparent,
+  @type: solid
+) {
+  border-bottom: ((@b / @target) + 0em) @type @color;
+}
+//Left
+.border(
+  l, 
+  @target: @baseFontPx,
+  @l,
+  @color: transparent,
+  @type: solid  
+) {
+  border-left: ((@l / @target) + 0em) @type @color;
+}
+
+
+// Border Widths
+// ==========================================================================
+
+//All; Shorthand
+.border-width(
+  a, 
+  @target: @baseFontPx,
+  @t
+) {
+  border-width: ((@t / @target) + 0em);
+}
+
+//Top
+.border-width(
+  t, 
+  @target: @baseFontPx,
+  @t
+) {
+  border-top-width: ((@t / @target) + 0em);
+}
+//Right 
+.border-width(
+  r, 
+  @target: @baseFontPx,
+  @t,
+  @r,
+  @b,
+  @l
+) {
+  border-right-width: ((@r / @target) + 0em);
+}
+
+//Bottom
+.border-width(
+  b, 
+  @target: @baseFontPx,
+  @b
+) {
+  border-bottom-width: ((@b / @target) + 0em);
+}
+
+// Left
+.border-width(
+  l, 
+  @target: @baseFontPx,
+  @l
+) {
+  border-left-width: ((@l / @target) + 0em);
+}
+
+//Top-Right Bottom-Left
+.border-width(
+  tr, 
+  @target: @baseFontPx,
+  @t,
+  @r
+) {
+  border-width: ((@t / @target) + 0em) ((@r / @target) + 0em);
+}
+
+//Top-Right Bottom-Left
+.border-width(
+  trbl, 
+  @target: @baseFontPx,
+  @t,
+  @r,
+  @b,
+  @l
+) {
+  border-width: ((@t / @target) + 0em) ((@r / @target) + 0em) ((@b / @target) + 0em) ((@l / @target) + 0em);
+}
+
+
+//-------------------------------------- 
+// CSS3 Mix-ins
+//-------------------------------------- 
+ 
+
+// Form Fields          
+//--------------------------------------
+
+// Reset appearance: -webkit only (removed from CSS4 spec)
+.appearance(@type: none) {
+  -webkit-appearance: @type;
+  -moz-appearance: @type;
+  -o-appearance: @type;
+  appearance: @type;
+} 
+
+//--------------------------------------
+// LAYOUT
+//--------------------------------------
+
+
+//Multi-Columns
+.columns(
+ @count: 2,
+ @length: auto,
+) {
+ -webkit-columns: @count @length;
+ -moz-columns:    @count @length; 
+ -o-columns:      @count @length;
+ columns:         @count @length;
+}  
+.column-rule(
+ @width: 1, 
+ @style: solid,
+ @color: @moduleGrey
+) {
+ -webkit-column-rule: @width @style @color;
+ -moz-column-rule:    @width @style @color;
+ -o-column-rule:      @width @style @color;
+ column-rule:         @width @style @color;
+} 
+.column-gap(
+ @target: @baseFontPx,
+ @w
+) {
+ -webkit-column-gap: ((@w / @target) + 0em);
+ -moz-column-gap:    ((@w / @target) + 0em);
+ -o-column-gap:      ((@w / @target) + 0em);
+ column-gap:         ((@w / @target) + 0em);
+} 
+
+.column-span(
+ @span: all
+) {
+ -webkit-column-span: @span;
+ -moz-column-span:    @span;
+ -o-column-span:      @span;
+ column-column-span:  @span;
+} 
+ 
+
+// Box Model Adjustment
+.box-sizing(
+  @type: border-box
+){
+  -webkit-box-sizing: @type;
+  -moz-box-sizing:    @type;
+  -ms-box-sizing:     @type;
+  box-sizing:         @type;
+       
+}
+
+//--------------------------------------
+// Animation
+//--------------------------------------
+
+.transition(@arguments){
+  -webkit-transition: @arguments;
+  -moz-transition:    @arguments;
+  -o-transition:      @arguments;
+  transition:         @arguments;
+}
+
+.animation (@name, @duration: 300ms, @delay: 0, @ease: ease) {
+	-webkit-animation: @name @duration @delay @ease;
+	-moz-animation:    @name @duration @delay @ease;
+	-ms-animation:     @name @duration @delay @ease;
+}
+
+//--------------------------------------
+// Transformations
+//--------------------------------------
+.transform(@string){
+	-webkit-transform: @string;
+	-moz-transform:    @string;
+	-ms-transform:     @string;
+	-o-transform:      @string;
+	transform:         @string;
+}
+
+.scale (@factor) {
+	-webkit-transform: scale(@factor);
+	-moz-transform:    scale(@factor);
+	-ms-transform:     scale(@factor);
+	-o-transform:      scale(@factor);
+	transorm:          scale(@factor);
+}
+.rotate (@deg) {
+	-webkit-transform: rotate(@deg);
+	-moz-transform:    rotate(@deg);
+	-ms-transform:     rotate(@deg);
+	-o-transform:      rotate(@deg);
+	transform:         rotate(@deg);
+}
+.rotateZ (@deg) {
+  -webkit-transform: rotatez(@deg);
+  -moz-transform:    rotatez(@deg);
+  -ms-transform:     rotatez(@deg);
+  -o-transform:      rotatez(@deg);
+  transform:         rotatez(@deg);
+ }
+.skew (@deg, @deg2) {
+	-webkit-transform: skew(@deg, @deg2);
+	-moz-transform: skew(@deg, @deg2);
+	-ms-transform: skew(@deg, @deg2);
+	-o-transform: skew(@deg, @deg2);
+	transform: skew(@deg, @deg2);
+}
+.translate (@x, @y:0) {
+	-webkit-transform: translate(@x, @y);
+	-moz-transform:    translate(@x, @y);
+	-ms-transform:     translate(@x, @y);
+	-o-transform:      translate(@x, @y);
+	transform:         translate(@x, @y);
+}
+.translate3d (@x: 0, @y: 0, @z: 0) {
+	-webkit-transform: translate3d(@x, @y, @z);
+	-moz-transform: 	 translate3d(@x, @y, @z);
+	-ms-transform: 		 translate3d(@x, @y, @z);
+	-o-transform: 		 translate3d(@x, @y, @z);
+	transform:         transform3d(@x, @y, @z);
+}
+.perspective (@value: 1000) {
+	-webkit-perspective: 	@value;
+	-moz-perspective: 	@value;
+	-ms-perspective: 	@value;
+	perspective: 		@value;
+}
+.transform-origin (@x:center, @y:center) {
+	-webkit-transform-origin: @x @y;
+	-moz-transform-origin:    @x @y;
+	-ms-transform-origin:     @x @y;
+	-o-transform-origin:      @x @y; 
+	transform-origin:         @x @y
+}
+
+//--------------------------------------
+// Visual Styling
+//--------------------------------------
+
+.opacity(@opacity: 0.5) {
+  -webkit-opacity: @opacity;
+  opacity: @opacity;
+}
+
+.box-shadow(
+  @arguments
+ ){
+  -webkit-box-shadow: @arguments; 
+     -moz-box-shadow: @arguments;
+      -ms-box-shadow: @arguments;
+       -o-box-shadow: @arguments;
+          box-shadow: @arguments;
+}
+ 
+.text-shadow(
+  @arguments
+) {
+  text-shadow: @arguments;
+}
+
+//--------------------------------------
+// Backgrounds
+//--------------------------------------
+
+// Background-Clip
+.background-clip(
+  @type 
+) {
+  -webkit-background-clip: @type; 
+     -moz-background-clip: @type;
+       -o-background-clip: @type;
+  	      background-clip: @type;
+}              
+
+// Background Size 
+.background-size(
+  @size: contain
+) {
+  -webkit-background-size: @arguments;
+     -moz-background-size: @arguments;
+       -o-background-size: @arguments;
+          background-size: @arguments;
+}
+
+// Linear Gradients
+.linear-gradient(tb, @start: #EEE, @stop: #FFF) {
+  background: @start;
+  background: -webkit-gradient(linear,
+                               left top,
+                               left bottom,
+                               color-stop(0%, @start),
+                               color-stop(100%, @stop));
+  background: -webkit-linear-gradient(top, @start 0%, @stop 100%);
+  background: -ms-linear-gradient(top, @start 0%, @stop 100%);
+  background: linear-gradient(top, @start 0%, @stop 100%);
+}
+
+.linear-gradient(lr, @start: #EEE, @stop: #FFF) {
+  background: @start;
+  background: -webkit-gradient(linear,
+                               left top,
+                               right top,
+                               color-stop(0%, @start),
+                               color-stop(100%, @stop));
+  background: -webkit-linear-gradient(left, @start 0%, @stop 100%);
+  background: -ms-linear-gradient(top, @start 0%, @stop 100%);
+  background: linear-gradient(left, @start 0%, @stop 100%);
+}
+
+.linear-gradient(tlbr, @start: #EEE, @stop: #FFF) {
+  background: @start;
+  background: -webkit-gradient(linear,
+                               left top,
+                               right bottom,
+                               color-stop(0%, @start),
+                               color-stop(100%, @stop));
+  background: -webkit-linear-gradient(-45deg, @start 0%, @stop 100%);
+  background: -ms-linear-gradient(-45deg, @start 0%, @stop 100%);
+  background: linear-gradient(-45deg, @start 0%, @stop 100%);
+}
+
+.linear-gradient(trbl, @start: #EEE, @stop: #FFF) {
+  background: @start;
+  background: -webkit-gradient(linear,
+                               right top,
+                               left bottom,
+                               color-stop(0%, @start),
+                               color-stop(100%, @stop));
+  background: -webkit-linear-gradient(45deg, @start 0%, @stop 100%);
+  background: -ms-linear-gradient(45deg, @start 0%, @stop 100%);
+  background: linear-gradient(45deg, @start 0%, @stop 100%);
+}
+
+
+
+//--------------------------------------
+// Borders
+//--------------------------------------
+
+// Border Radius
+// none
+.border-radius(
+  none
+) {
+  -webkit-border-radius: 0; 
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+  border-radius: 0;
+}
+
+// Percentage
+.border-radius(
+  cent,
+  @t
+) {
+  -webkit-border-radius: @t; 
+  -moz-border-radius: @t;
+  -ms-border-radius: @t;
+  -o-border-radius: @t;
+  border-radius: @t;
+}
+
+// Single Radius
+.border-radius(
+  a,
+  @context: @baseFontPx, 
+  @t
+) {
+  -webkit-border-radius: (@t / @context) + 0em; 
+  -moz-border-radius: (@t / @context) + 0em;
+  -ms-border-radius: (@t / @context) + 0em;
+  -o-border-radius: (@t / @context) + 0em;
+  border-radius: (@t / @context) + 0em;
+}
+
+// Top-Left + Top-Right Radius
+.border-radius(
+  tlr,
+  @context: @baseFontPx, 
+  @tl: null,
+  @tr: null
+) {
+  -webkit-border-radius: ((@tl / @context) + 0em) ((@tr / @context) + 0em) 0 0; 
+  -moz-border-radius: ((@tl / @context) + 0em) ((@tr / @context) + 0em) 0 0;
+  -ms-border-radius: ((@tl / @context) + 0em) ((@tr / @context) + 0em) 0 0;
+  -o-border-radius: ((@tl / @context) + 0em) ((@tr / @context) + 0em) 0 0;
+  border-radius: ((@tl / @context) + 0em) ((@tr / @context) + 0em) 0 0;
+}
+
+// Top-Left 
+.border-radius(
+  tl,
+  @context: @baseFontPx, 
+  @tl: null
+) {
+  -webkit-border-radius: ((@tl / @context) + 0em) 0 0 0; 
+  -moz-border-radius: ((@tl / @context) + 0em) 0 0 0;
+  -ms-border-radius: ((@tl / @context) + 0em) 0 0 0;
+  -o-border-radius: ((@tl / @context) + 0em) 0 0 0;
+  border-radius: ((@tl / @context) + 0em) 0 0 0;
+}
+
+// Top-Right 
+.border-radius(
+  tr,
+  @context: @baseFontPx, 
+  @tr: null
+) {
+  -webkit-border-radius: 0 ((@tr / @context) + 0em) 0 0; 
+  -moz-border-radius: 0 ((@tr / @context) + 0em) 0 0;
+  -ms-border-radius: 0 ((@tr / @context) + 0em) 0 0;
+  -o-border-radius: 0 ((@tr / @context) + 0em) 0 0;
+  border-radius: 0 ((@tr / @context) + 0em) 0 0;
+}
+
+// Bottom-Left + Bottom-Right Radius
+.border-radius(
+  blr,
+  @context: @baseFontPx, 
+  @br,
+  @bl
+) {
+  -webkit-border-radius: 0 0 ((@br / @context) + 0em) ((@bl / @context) + 0em); 
+  -moz-border-radius: 0 0 ((@br / @context) + 0em) ((@bl / @context) + 0em);
+  -ms-border-radius: 0 0 ((@br / @context) + 0em) ((@bl / @context) + 0em);
+  -o-border-radius: 0 0 ((@br / @context) + 0em) ((@bl / @context) + 0em);
+  border-radius: 0 0 ((@br / @context) + 0em) ((@bl / @context) + 0em);
+}
+
+// Bottom-Left 
+.border-radius(
+  bl,
+  @context: @baseFontPx, 
+  @bl: null
+) {
+  -webkit-border-radius: 0 0 ((@bl / @context) + 0em) 0; 
+  -moz-border-radius: 0 0 ((@bl / @context) + 0em) 0;
+  -ms-border-radius: 0 0 ((@bl / @context) + 0em) 0;
+  -o-border-radius: 0 0 ((@bl / @context) + 0em) 0;
+  border-radius: 0 0 ((@bl / @context) + 0em) 0;
+}
+
+// Bottom-Right 
+.border-radius(
+  br,
+  @context: @baseFontPx, 
+  @br: null
+) {
+  -webkit-border-radius: 0 0 0 ((@br / @context) + 0em); 
+  -moz-border-radius: 0 0 0 ((@br / @context) + 0em);
+  -ms-border-radius: 0 0 0 ((@br / @context) + 0em);
+  -o-border-radius: 0 0 0 ((@br / @context) + 0em);
+  border-radius: 0 0 0 ((@br / @context) + 0em);
+}
+
+// Top-Left + Bottom-Left Radius
+.border-radius(
+  tlbl,
+  @context: @baseFontPx, 
+  @tl: null,
+  @bl: null
+) {
+  -webkit-border-radius: ((@tl / @context) + 0em) 0 0 ((@bl / @context) + 0em); 
+  -moz-border-radius: ((@tl / @context) + 0em) 0 0 ((@bl / @context) + 0em);
+  -ms-border-radius: ((@tl / @context) + 0em) 0 0 ((@bl / @context) + 0em);
+  -o-border-radius: ((@tl / @context) + 0em) 0 0 ((@bl / @context) + 0em);
+  border-radius: ((@tl / @context) + 0em) 0 0 ((@bl / @context) + 0em);
+}
+
+// Top-Left + Bottom-Left Radius
+.border-radius(
+  trbr,
+  @context: @baseFontPx, 
+  @tr: null,
+  @br: null
+) {
+  -webkit-border-radius: 0 ((@tr / @context) + 0em) 0 ((@br / @context) + 0em); 
+  -moz-border-radius: 0 ((@tr / @context) + 0em) 0 ((@br / @context) + 0em);
+  -ms-border-radius: 0 ((@tr / @context) + 0em) 0 ((@br / @context) + 0em);
+  -o-border-radius: 0 ((@tr / @context) + 0em) 0 ((@br / @context) + 0em);
+  border-radius: 0 ((@tr / @context) + 0em) 0 ((@br / @context) + 0em);
+}
+
+// All Four Radii
+.border-radius(
+  tlrbrl,
+  @context: @baseFontPx, 
+  @tl,
+  @tr,
+  @br,
+  @bl
+) {
+  -webkit-border-radius: ((@tl / @context) + 0em) ((@tr / @context) + 0em) ((@br / @context) + 0em) ((@bl / @context) + 0em); 
+  -moz-border-radius: ((@tl / @context) + 0em) ((@tr / @context) + 0em) ((@br / @context) + 0em) ((@bl / @context) + 0em);
+  -ms-border-radius: ((@tl / @context) + 0em) ((@tr / @context) + 0em) ((@br / @context) + 0em) ((@bl / @context) + 0em);
+  -o-border-radius: ((@tl / @context) + 0em) ((@tr / @context) + 0em) ((@br / @context) + 0em) ((@bl / @context) + 0em);
+  border-radius: ((@tl / @context) + 0em) ((@tr / @context) + 0em) ((@br / @context) + 0em) ((@bl / @context) + 0em);
+}
+
