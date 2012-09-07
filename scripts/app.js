@@ -1,3 +1,4 @@
+
 var mifos = {};
 mifos.url = "https://ec2-46-137-62-163.eu-west-1.compute.amazonaws.com:8443/mifosng-provider/api/v1/";
 mifos.tenantId = "&tenantIdentifier=default"
@@ -157,12 +158,17 @@ $(document).ready(function(){
         mifos.login('mifos','password');
     })
 
-    $(document).on('click','#listUsers',function(e){
-        e.preventDefault();
-        var data = $(this).serializeArray();
-        console.log(this);
-        mifos.login('mifos','password');
+    $(document).on('click','.tab a',function(e){
+        var source;
+        switch($(e.target).attr("href")){
+            case '#users':
+                        source = $("#userMenu-template").html();
+        }
+        var template = Handlebars.compile(source);
+        var html = template({errors : []});
+        mifos.render("#mainContent",html);
     })
+
 
     $('body').on('click','.menu',function(e){
       e.preventDefault();
@@ -171,4 +177,5 @@ $(document).ready(function(){
       $(sidebar).toggleClass('on');
 
     });
+
 });
