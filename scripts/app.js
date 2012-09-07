@@ -103,5 +103,5 @@ $(document).ready(function(){
     var source   = $("#signIn-template").html();
     var template = Handlebars.compile(source);
     var html = template({errors : []});
-    $("mainContent").append(html);
+    $("#mainContent").append(html);
 });
