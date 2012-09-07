@@ -30,7 +30,7 @@ var jqxhr = $.ajax({
       },
       error : function(jqXHR, textStatus, errorThrown) {
           //Show error message
-          //mifos.login.failed({errors : [{defaultUserMessage : "loginFailed"}]});
+          mifos.loginFailed({errors : [{defaultUserMessage : "loginFailed"}]});
       }
   });
 }
