@@ -6,7 +6,7 @@ mifos.users = "users/"
 mifos.login = function(username, password)
 {
 var jqxhr = $.ajax({
-      url : mifos.url + "authentication?username=" + username + "&password=" + password,
+      url : mifos.url + "authentication?username=" + username + "&password=" + password + mifos.tenantId,
       type : 'POST',
       contentType : "application/json; charset=utf-8",
       dataType : 'json',
