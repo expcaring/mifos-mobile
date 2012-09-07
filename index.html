@@ -29,6 +29,23 @@
 	<footer class="site-footer" role="contentinfo">
 		<!-- Footer -->
 	</footer>
+    <!--Sign In Script-->
+    <script id="signIn-template" type="text/x-handlebars-template">
+        <form id="signIn" action="">
+            <div>
+                <label for="username">Username: </label>
+                <input id="username" type="text" value=""/>
+            </div>
+            <div>
+                <label for="password">Password: </label>
+                <input id="password" type="password" value=""/>
+            </div>
+            <button type="submit">Submit</button>
+            <div class="error">{{errorMessage}}</div>
+        </form>
+    </script>
+
+
 	<script src="scripts/zepto-1-rc-1.min.js"></script>
 </body>
 </html>
