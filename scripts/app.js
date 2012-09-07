@@ -6,33 +6,33 @@ mifos.users = "api/v1/users"
 mifos.login = function(username, password)
 {
 var jqxhr = $.ajax({
-        url : mifos.url + "authentication?username=" + username + "&password=" + password,
-        type : 'POST',
-        contentType : "application/json; charset=utf-8",
-        dataType : 'json',
-        data : "{}",
-        cache : false,
-        success : function(data, textStatus, jqXHR) {     
-            mifos.basicAuthKey = data.base64EncodedAuthenticationKey;
-            if(data)
-            {
-                if(data.errors)
-                {
-                    //Show error message
-                    mifos.loginFailed(data);
-                }
-                else
-                {
-                    //Load main menu
-                    
-                }
-            }
-        },
-        error : function(jqXHR, textStatus, errorThrown) {
-            //Show error message
-            mifos.login.failed({errors : [{defaultUserMessage : "loginFailed"}]});
-        }
-    });
+      url : mifos.url + "authentication?username=" + username + "&password=" + password,
+      type : 'POST',
+      contentType : "application/json; charset=utf-8",
+      dataType : 'json',
+      data : "{}",
+      cache : false,
+      success : function(data, textStatus, jqXHR) {     
+          mifos.basicAuthKey = data.base64EncodedAuthenticationKey;
+          if(data)
+          {
+              if(data.errors)
+              {
+                  //Show error message
+                  mifos.loginFailed(data);
+              }
+              else
+              {
+                  //Load main menu
+                  
+              }
+          }
+      },
+      error : function(jqXHR, textStatus, errorThrown) {
+          //Show error message
+          //mifos.login.failed({errors : [{defaultUserMessage : "loginFailed"}]});
+      }
+  });
 }
 
 mifos.loginFailed = function(data)
@@ -105,8 +105,11 @@ $(document).ready(function(){
     var template = Handlebars.compile(source);
     var html = template({errors : []});
     $("#mainContent").append(html);
-    $('#signInForm').on('submit',function(){
-        var data = this.serializeArray();
-        mifos.login(data.username,user.password);
+    
+    $(document).on('submit','#signInForm',function(e){
+        e.preventDefault();
+        var data = $(this).serializeArray();
+        console.log(this);
+        mifos.login('mifos','password');
     })
 });
