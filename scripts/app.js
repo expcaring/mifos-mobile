@@ -1,5 +1,3 @@
-
-
 var mifos = {};
 mifos.url = "https://ec2-46-137-62-163.eu-west-1.compute.amazonaws.com:8443/mifosng-provider/api/v1/";
 mifos.tenantId = "&tenantIdentifier=default"
@@ -178,5 +176,4 @@ $(document).ready(function(){
       $(sidebar).toggleClass('on');
 
     });
-
 });
