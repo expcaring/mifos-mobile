@@ -27,11 +27,6 @@ var jqxhr = $.ajax({
               {
                   //Load main menu
                   mifos.loadHome();
-                  //Load empty client page
-                  var source   = $("#emptyClientPage").html();
-                  var template = Handlebars.compile(source);
-                  var html = template({errors : []});
-                  mifos.render("#mainContent",html);
               }
           }
       },
@@ -158,7 +153,7 @@ $(document).ready(function(){
         e.preventDefault();
         var data = $(this).serializeArray();
         console.log(this);
-        mifos.login(data.username,data.password);
+        mifos.login(data[0].value,data[1].value);
     })
 
     $("body").on('click','.tab a',function(e){
