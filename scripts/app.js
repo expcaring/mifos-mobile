@@ -77,11 +77,11 @@ mifos.executeAjaxRequest = function(request, requestType, inputData, successFunc
         dataType : 'json',
         data : inputData, //As JSON
         cache : false,
-        beforeSend : function(xhr) {
-                xhr.setRequestHeader("Authorization", "Basic " + mifos.basicAuthKey);
+        beforeSend : function(jqxhr) {
+                jqxhr.setRequestHeader("Authorization", "Basic " + mifos.basicAuthKey);
         },
-        success : successFunction(xhr),
-        error : mifos.error(xhr)
+        success : successFunction(jqxhr),
+        error : mifos.error(jqxhr)
     });
 }
 
@@ -156,16 +156,25 @@ $(document).ready(function(){
 
     $("body").on('click','.tab a',function(e){
         var source;
-        switch($(e.target).attr("href")){
+        switch ($(e.target).attr("href")) {
             case '#users':
-                        mifos.renderTemplate("#userMenu-template","#mainContent");
+
+                var source = $("#userMenu-template").html();
+                var template = Handlebars.compile(source);
+                var html = template({errors:[]});
+                mifos.render("#users", html);
             case '#viewUsers':
-                        mifos.renderTemplate("#userMenu-template","#mainContent");
-                        var data = mifos.listUsers();
-                        var source = $("listUsers-template").html();
-                        var template = Handlebars.compile(source);
-                        var html = template(data);
-        }               $("#mainContent").append(html);
+                var source = $("#userMenu-template").html();
+                var template = Handlebars.compile(source);
+                var html = template({errors:[]});
+                mifos.render("#users", html);
+                var data = mifos.listUsers();
+                var source = $("listUsers-template").html();
+                var template = Handlebars.compile(source);
+                var html = template(data);
+                $("#users").append(html);
+
+        }
 
     })
 
