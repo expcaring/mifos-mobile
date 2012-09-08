@@ -23,26 +23,23 @@
       <!-- Navs go here -->
     </aside>
 
+    <section class="content column" id="mainContent" role="main">
+      <!-- Main  -->
+      <article class="page" id="signIn"></article>
 
-      <section class="content column" id="mainContent" role="main">
-        <!-- Main  -->
-        <article class="page" id="clients">
-          
-        </article>
-        <article class="page" id="users">
-          
-        </article>
-        <article class="page" id="org">
-          
-        </article>
-        <article class="page" id="reports">
-          
-        </article>
-         <article class="page" id="home">
-
-         </article>
-
-
+      <article class="page" id="home"></article>
+      <article class="page" id="clients">
+        
+      </article>
+      <article class="page" id="users">
+        
+      </article>
+      <article class="page" id="org">
+        
+      </article>
+      <article class="page" id="reports">
+        
+      </article>
     </section>
   </div>
 
@@ -62,22 +59,20 @@
 
    <!--Sign In Script-->
     <script id="signIn-template" type="text/x-handlebars-template">
-        <article class="page is-visible" id="signIn">
-          <form id="signInForm" action="">
-            <label>
-              <span class="visuallyhidden">Username</span>
-              <input id="username" name="username" type="text" value="" placeholder="Username"/>
-            </label>
-            <label>
-              <span class="visuallyhidden">Password</span>
-              <input id="password" name="password" type="password" value="" placeholder="Password"/>
-            </label>
-            <button type="submit">Sign In</button>
-            <div class="error">
-            	{{#list errors}}{{defaultUserMessage}}{{/list}}
-            </div>
-          </form>
-        </article>
+      <form id="signInForm" action="">
+        <label>
+          <span class="visuallyhidden">Username</span>
+          <input id="username" name="username" type="text" value="" placeholder="Username"/>
+        </label>
+        <label>
+          <span class="visuallyhidden">Password</span>
+          <input id="password" name="password" type="password" value="" placeholder="Password"/>
+        </label>
+        <button type="submit">Sign In</button>
+        <div class="error">
+        	{{#list errors}}{{defaultUserMessage}}{{/list}}
+        </div>
+      </form>
     </script>
 
 

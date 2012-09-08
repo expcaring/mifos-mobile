@@ -65,7 +65,7 @@ mifos.loginFailed = function(data)
      {
         html = template({errors : []});
      }
-     mifos.render("#mainContent", html);
+     mifos.render("#signIn", html);
 }
 
 mifos.executeAjaxRequest = function(request, requestType, inputData, successFunction)
@@ -145,7 +145,7 @@ $(document).ready(function(){
     var source   = $("#signIn-template").html();
     var template = Handlebars.compile(source);
     var html = template({errors : []});
-    $("#mainContent").append(html);
+    $("#signIn").append(html);
 
     $("body").on('submit','#signInForm',function(e){
         e.preventDefault();

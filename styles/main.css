@@ -730,7 +730,12 @@ body {
   padding-left: 0;
   padding-right: 0;
 }
-/* View Page Styles */.page:empty {
+/* View Page Styles */.page {
+  opacity: 1;
+  visibility: visible;
+  left: 0;
+}
+.page:empty {
   opacity: 0;
   visibility: hidden;
   left: 100%;
