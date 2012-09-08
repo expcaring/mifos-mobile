@@ -37,7 +37,7 @@ var jqxhr = $.ajax({
 
 mifos.render = function(elem, html)
 {
-    $(elem).empty();
+    $('.page').empty();
     $(elem).append(html);
 }
 
